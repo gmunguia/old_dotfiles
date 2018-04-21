@@ -1,0 +1,8 @@
+[user]
+	name = Gerardo Munguia
+	email = gerardomunguiahoyo@gmail.com
+[core]
+	excludesfile = ~/.gitignore
+	editor = nvim
+[push]
+	default = simple
