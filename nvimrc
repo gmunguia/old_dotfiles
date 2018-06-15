@@ -7,7 +7,7 @@ set timeoutlen=500
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if &compatible
-  set nocompatible               " Be iMproved
+  set nocompatible
 endif
 
 " Required:
@@ -26,8 +26,6 @@ call dein#add('mhartington/oceanic-next')
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('editorconfig/editorconfig-vim')
 call dein#add('w0rp/ale')
-call dein#add('tpope/vim-surround')
-call dein#add('rhysd/vim-grammarous')
 " Navigation & git
 call dein#add('ctrlpvim/ctrlp.vim')
 "call dein#add('vim-ctrlspace/vim-ctrlspace')
@@ -35,7 +33,6 @@ call dein#add('scrooloose/nerdtree')
 call dein#add('Xuyuanp/nerdtree-git-plugin')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('terryma/vim-multiple-cursors')
-call dein#add('pelodelfuego/vim-swoop')
 call dein#add('easymotion/vim-easymotion')
 " Status bar
 call dein#add('tpope/vim-fugitive')
@@ -55,14 +52,6 @@ call dein#add('ElmCast/elm-vim', {'on_ft': 'elm'})
 " Markdown
 call dein#add('godlygeek/tabular', {'on_ft': 'markdown'})
 call dein#add('plasticboy/vim-markdown', {'on_ft': 'markdown'})
-" Php
-" TODO: add composer global bin to PATH:
-"   add "minimum-stability":"dev" to global composer.json
-"   `export COMPOSER_HOME=$HOME/.config/composer`
-"   `export PATH=$PATH:$COMPOSER_HOME/vendor/bin`
-"   run `padawan generate` on project root
-call dein#add('padawan-php/deoplete-padawan', {'on_ft': 'php'}, {'build': 'composer global require mkusher/padawan:dev-master && composer install'})
-" TODO: install phpstan: `composer require --dev phpstan/phpstan` 
 
 " Required:
 call dein#end()
@@ -82,11 +71,6 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " easymotion
 let g:EasyMotion_keys = 'aoeusnthidlrcg12340987'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" padawan-php
-" call deoplete#sources#padawan#InstallServer()
-" call deoplete#sources#padawan#UpdateServer()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " elm-vim
@@ -116,6 +100,7 @@ let g:deoplete#sources#ternjs#filetypes = [
   \ 'jsx',
   \ 'javascript.jsx',
   \ 'vue',
+  \ 'javascript',
   \ ]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -166,12 +151,6 @@ function! s:check_back_space() abort "{{{
 endfunction"}}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" swoop
-let g:swoopUseDefaultKeyMap = 0
-nmap <C-_> :call Swoop()<CR>
-vmap <C-_> :call SwoopSelection()<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " multi-cursor
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-u>'
@@ -179,26 +158,11 @@ let g:multi_cursor_skip_key='<C-s>'
 let g:multi_cursor_quit_key='<Esc>'
 let g:multi_cursor_exit_from_insert_mode=0
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" javascript syntax
-let g:javascript_conceal_function             = "ƒ"
-let g:javascript_conceal_null                 = "ø"
-let g:javascript_conceal_this                 = "@"
-let g:javascript_conceal_return               = "⇚"
-let g:javascript_conceal_undefined            = "¿"
-let g:javascript_conceal_NaN                  = "ℕ"
-let g:javascript_conceal_prototype            = "¶"
-let g:javascript_conceal_static               = "•"
-let g:javascript_conceal_super                = "Ω"
-let g:javascript_conceal_arrow_function       = "⇒"
-let g:javascript_conceal_noarg_arrow_function = "🞅"
-let g:javascript_conceal_underscore_arrow_function = "🞅"
-set conceallevel=0
-
 " enable syntax in jsdoc comments.
 let g:javascript_plugin_jsdoc = 1
 let g:jsdoc_enable_es6 = 1
 
+" auto folds.
 function! SwapFoldMethod()
   if &foldmethod == "syntax"
     set foldmethod=manual
@@ -228,8 +192,13 @@ nmap <silent> ]e <Plug>(ale_next_wrap)
 nmap <silent> [e <Plug>(ale_previous_wrap)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nerd-commenter
+nmap <leader>c <plug>NERDCommenterToggle
+vmap <leader>c <plug>NERDCommenterToggle
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd-tree
-map <C-t> :NERDTreeToggle<CR>
+" map <C-t> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -258,28 +227,7 @@ map <c-b> <c-p><c-f>
 map <leader> <Plug>(easymotion-prefix)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ctrl-space
-"set nocompatible
-"set hidden
-"set showtabline=0
-"nnoremap <C-Space> :CtrlSpace<CR>
-"if has("gui_running")
-     "Settings for MacVim and Inconsolata font
-    "let g:CtrlSpaceSymbols = { "File": "◯", "CTab": "▣", "Tabs": "▢" }
-"endif
-"if executable("ag")
-    "let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
-"endif
-"nnoremap <silent><C-p> :CtrlSpace O<CR>
-"nnoremap <silent><C-b> :CtrlSpace /<CR>
-"let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
-"let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
-"let g:CtrlSpaceSaveWorkspaceOnExit = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Nvim terminal
-"au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-"autocmd BufEnter term://* startinsert
 autocmd TermOpen * setlocal bufhidden=hide
 autocmd TermOpen * setlocal relativenumber&
 autocmd TermOpen * setlocal number&
@@ -287,8 +235,6 @@ autocmd TermOpen * setlocal signcolumn=no
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " airline TODO:
-" download font from https://github.com/powerline/fonts
-" then, run 'fc-cache -vf ~/.fonts/'
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -296,7 +242,7 @@ endif
 set hidden
 let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#buffer_idx_format = {
       \ '0': '0 ',
@@ -310,12 +256,6 @@ let g:airline#extensions#tabline#buffer_idx_format = {
       \ '8': '8 ',
       \ '9': '9 ',
       \}
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MatchTagAlways
-let g:mta_filetypes = { 'javascript': 1 }
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -332,44 +272,22 @@ set history=2000
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" Utility shotcuts
-" save
-"nmap <leader>w :w!<cr>
-" remove whitespace
-"nmap <leader>rs :%s/\s\+$//e<cr>
-" add semicolon
-"nmap <leader>; A;<esc>
-
 " Fix weird behavior or Y.
 nmap Y y$
 
 " Allow change window from terminal.
 tmap <c-w> <c-\><c-n><c-w>
-"nmap <leader>t :term<cr>
 tmap <leader><esc> <C-\><C-n>
-"tmap <leader><> <c-\><c-n>:bp! <BAR> bd! #<CR>
 nmap <leader>. :bnext<CR>
 nmap <leader>, :bprevious<CR>
-tmap <A-1> <C-\><C-n><Plug>AirlineSelectTab1
-tmap <A-2> <C-\><C-n><Plug>AirlineSelectTab2
-tmap <A-3> <C-\><C-n><Plug>AirlineSelectTab3
-tmap <A-4> <C-\><C-n><Plug>AirlineSelectTab4
-tmap <A-5> <C-\><C-n><Plug>AirlineSelectTab5
-tmap <A-6> <C-\><C-n><Plug>AirlineSelectTab6
-tmap <A-7> <C-\><C-n><Plug>AirlineSelectTab7
-tmap <A-8> <C-\><C-n><Plug>AirlineSelectTab8
-tmap <A-9> <C-\><C-n><Plug>AirlineSelectTab9
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-nmap <leader>c <plug>NERDCommenterToggle
-vmap <leader>c <plug>NERDCommenterToggle
+
+" Align blocks of text and keep them selected
+vmap < <gv
+vmap > >gv
+
+nnoremap <silent> <esc> :noh<cr>
+
+nnoremap Q <nop>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
@@ -474,11 +392,3 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
-
-" Align blocks of text and keep them selected
-vmap < <gv
-vmap > >gv
-
-nnoremap <silent> <esc> :noh<cr>
-
-nnoremap Q <nop>
