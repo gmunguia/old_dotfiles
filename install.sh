@@ -4,8 +4,8 @@ set -e
 
 echo "installing git..."
 sudo apt install git
-cp gitconfig ~/.gitconfig
-cp gitignore ~/.gitignore
+ln -s "$(pwd)/gitconfig" ~/.gitconfig
+ln -s "$(pwd)/gitignore" ~/.gitignore
 
 echo "installing chrome..."
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
@@ -39,7 +39,7 @@ sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt update
 sudo apt install -y neovim python-dev python3-dev python-pip python3-pip
 mkdir -p ~/.config/nvim
-cp nvimrc ~/.config/nvim/init.vim
+ln -s "$(pwd)/nvimrc" ~/.config/nvim/init.vim
 
 echo "setting up neovim python dependencies"
 # TODO: move installation of these dependencies to init.vim
@@ -61,7 +61,7 @@ echo "installing zsh, oh-my-zsh..."
 sudo apt install -y zsh
 chsh -s $(which zsh)
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-cp zshrc ~/.zshrc
+ln -s "$(pwd)/zshrc" ~/.zshrc
 
 echo "setting up default shell user"
 echo "export DEFAULT_USER=$(whoami)" >> .zshrc
