@@ -198,7 +198,7 @@ vmap <leader>c <plug>NERDCommenterToggle
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd-tree
-" map <C-t> :NERDTreeToggle<CR>
+map <C-t> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
