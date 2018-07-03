@@ -6,3 +6,13 @@
 	editor = nvim
 [push]
 	default = simple
+[alias]
+	vimdiff = mergetool -t vimdiff
+	co = checkout
+[diff]
+  tool = vimdiff
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
+[mergetool "vimdiff"]
+  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
