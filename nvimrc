@@ -28,7 +28,6 @@ call dein#add('editorconfig/editorconfig-vim')
 call dein#add('w0rp/ale')
 " Navigation & git
 call dein#add('ctrlpvim/ctrlp.vim')
-"call dein#add('vim-ctrlspace/vim-ctrlspace')
 call dein#add('scrooloose/nerdtree')
 call dein#add('Xuyuanp/nerdtree-git-plugin')
 call dein#add('airblade/vim-gitgutter')
@@ -187,6 +186,7 @@ let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['json'] = ['prettier']
 let g:ale_fixers['css'] = ['prettier']
 let g:ale_fixers['markdown'] = ['prettier']
+let g:ale_fixers['yaml'] = ['prettier']
 nmap <c-l> :ALEFix<CR>
 nmap <silent> ]e <Plug>(ale_next_wrap)
 nmap <silent> [e <Plug>(ale_previous_wrap)
