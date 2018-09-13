@@ -22,7 +22,7 @@ call dein#add('Shougo/dein.vim')
 
 " General
 call dein#add('Shougo/deoplete.nvim')
-call dein#add('mhartington/oceanic-next')
+call dein#add('morhetz/gruvbox')
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('editorconfig/editorconfig-vim')
 call dein#add('w0rp/ale')
@@ -211,8 +211,9 @@ if (has("termguicolors"))
  set termguicolors
 endif
 syntax enable
-colorscheme OceanicNext
-let g:airline_theme='oceanicnext'
+colorscheme gruvbox
+set background=dark
+let g:airline_theme='gruvbox'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctrl-p
