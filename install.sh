@@ -64,6 +64,6 @@ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/to
 ln -s "$(pwd)/zshrc" ~/.zshrc
 
 echo "setting up default shell user"
-echo "export DEFAULT_USER=$(whoami)" >> .zshrc
+echo "export DEFAULT_USER=$(whoami)" >> ~/.zshrc
 
 echo "Done!!"
