@@ -1,16 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
 echo "installing git..."
-sudo apt install git
+sudo apt install -y git
 ln -s "$(pwd)/gitconfig" ~/.gitconfig
 ln -s "$(pwd)/gitignore" ~/.gitignore
 
 echo "installing chrome..."
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-sudo apt udate
+sudo apt update
 sudo apt install -y google-chrome-stable
 
 echo "installing keepass..."
@@ -19,9 +19,10 @@ sudo apt update
 sudo apt install -y keepass2
 
 echo "installing nvm..."
+sudo apt install -y curl
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 echo "setting up node, npm..."
@@ -61,6 +62,7 @@ echo "installing zsh, oh-my-zsh..."
 sudo apt install -y zsh
 chsh -s $(which zsh)
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+rm ~/.zshrc
 ln -s "$(pwd)/zshrc" ~/.zshrc
 
 echo "setting up default shell user"

@@ -105,8 +105,12 @@ let g:deoplete#sources#ternjs#filetypes = [
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " deoplete
 let g:deoplete#enable_at_startup = 1
-set completeopt+=noselect
+let g:deoplete#auto_complete_delay = 0
+set completeopt+=menuone,noinsert,noselect
+set completeopt-=preview
+
 autocmd CompleteDone * pclose
+
 function! Multiple_cursors_before()
   let b:deoplete_disable_auto_complete=2
 endfunction
@@ -114,12 +118,13 @@ function! Multiple_cursors_after()
   let b:deoplete_disable_auto_complete=0
 endfunction
 
-call deoplete#custom#set('buffer', 'mark', '*')
-call deoplete#custom#set('ternjs', 'mark', 'JS')
-call deoplete#custom#set('typescript', 'mark', 'TS')
-call deoplete#custom#set('omni', 'mark', 'O')
-call deoplete#custom#set('file', 'mark', 'F')
-call deoplete#custom#set('_', 'matchers', ['matcher_fuzzy'])
+call deoplete#custom#source('buffer', 'mark', '*')
+call deoplete#custom#source('tern', 'mark', 'JS')
+call deoplete#custom#source('omni', 'mark', 'O')
+call deoplete#custom#source('typescript', 'mark', 'TS')
+call deoplete#custom#source('file', 'mark', 'F')
+call deoplete#custom#source('jedi', 'mark', 'jd')
+call deoplete#custom#source('_', 'matchers', ['matcher_fuzzy'])
 
 function! Preview_func()
   if &pvw
@@ -128,8 +133,7 @@ function! Preview_func()
 endfunction
 
 autocmd WinEnter * call Preview_func()
-let g:deoplete#ignore_sources = {}
-let g:deoplete#ignore_sources._ = ['around']
+let g:deoplete#ignore_sources = {'_': ['around', 'buffer' ]}
 
 " Navigate completion results.
 inoremap <silent><expr> <C-j>
@@ -235,7 +239,7 @@ autocmd TermOpen * setlocal number&
 autocmd TermOpen * setlocal signcolumn=no
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" airline TODO:
+" airline:
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
