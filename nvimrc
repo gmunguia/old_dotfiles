@@ -26,6 +26,7 @@ call dein#add('morhetz/gruvbox')
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('editorconfig/editorconfig-vim')
 call dein#add('w0rp/ale')
+call dein#add('fszymanski/deoplete-emoji')
 " Navigation & git
 call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('scrooloose/nerdtree')
