@@ -9,6 +9,7 @@
 [alias]
 	vimdiff = mergetool -t vimdiff
 	co = checkout
+	fa = fetch --all -p
 [diff]
   tool = vimdiff
 [merge]
