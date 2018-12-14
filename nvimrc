@@ -34,6 +34,7 @@ call dein#add('Xuyuanp/nerdtree-git-plugin')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('terryma/vim-multiple-cursors')
 call dein#add('easymotion/vim-easymotion')
+call dein#add('tpope/vim-surround')
 " Status bar
 call dein#add('tpope/vim-fugitive')
 call dein#add('vim-airline/vim-airline')
