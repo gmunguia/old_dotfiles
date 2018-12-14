@@ -401,3 +401,6 @@ set si "Smart indent
 set wrap "Wrap lines
 
 set title
+
+set list
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
