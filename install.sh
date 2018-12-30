@@ -18,6 +18,16 @@ sudo add-apt-repository ppa:eugenesan/ppa
 sudo apt update
 sudo apt install -y keepass2
 
+echo "installing zsh, oh-my-zsh..."
+sudo apt install -y zsh
+chsh -s $(which zsh)
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+rm ~/.zshrc
+ln -s "$(pwd)/zshrc" ~/.zshrc
+
+echo "setting up default shell user"
+echo "export DEFAULT_USER=$(whoami)" >> ~/.zshrc
+
 echo "installing nvm..."
 sudo apt install -y curl
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
@@ -27,6 +37,10 @@ export NVM_DIR="$HOME/.nvm"
 
 echo "setting up node, npm..."
 nvm install --lts
+
+echo "installing yarn..."
+npm i -g yarn
+npm i -g yarn-completions
 
 echo "installing fonts..."
 git clone https://github.com/powerline/fonts --depth=1
@@ -57,15 +71,5 @@ mkdir ~/vim-dein
 sudo chown -R $(whoami) ~/vim-dein
 sh ./installer.sh ~/vim-dein
 rm ./installer.sh
-
-echo "installing zsh, oh-my-zsh..."
-sudo apt install -y zsh
-chsh -s $(which zsh)
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-rm ~/.zshrc
-ln -s "$(pwd)/zshrc" ~/.zshrc
-
-echo "setting up default shell user"
-echo "export DEFAULT_USER=$(whoami)" >> ~/.zshrc
 
 echo "Done!!"
