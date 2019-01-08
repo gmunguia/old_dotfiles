@@ -22,14 +22,22 @@ call dein#add('Shougo/dein.vim')
 
 " General
 call dein#add('Shougo/deoplete.nvim')
-call dein#add('morhetz/gruvbox')
+call dein#add('mhinz/vim-startify')
+call dein#add('luochen1990/rainbow')
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('editorconfig/editorconfig-vim')
 call dein#add('w0rp/ale')
 call dein#add('fszymanski/deoplete-emoji')
+" Themes
+call dein#add('morhetz/gruvbox')
+call dein#add('lifepillar/vim-solarized8')
+call dein#add('mhartington/oceanic-next')
+call dein#add('dikiaap/minimalist')
+call dein#add('flazz/vim-colorschemes')
+call dein#add('nathanaelkane/vim-indent-guides')
 " Navigation & git
-call dein#add('ctrlpvim/ctrlp.vim')
-call dein#add('scrooloose/nerdtree')
+call dein#add('Shougo/denite.nvim')
+call dein#add('scrooloose/nerdtree', {'build': ':UpdateRemotePlugins'})
 call dein#add('Xuyuanp/nerdtree-git-plugin')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('terryma/vim-multiple-cursors')
@@ -180,6 +188,16 @@ command Fold call SwapFoldMethod()
 set foldlevel=99 " Start with folds open.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" rainbow
+let g:rainbow_active = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Indent Lines
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ale
 let g:ale_sign_error = 'X' " could use emoji
 let g:ale_sign_warning = '?' " could use emoji
@@ -222,12 +240,17 @@ set background=dark
 let g:airline_theme='gruvbox'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ctrl-p
+" denite
 set wildignore+=*/node_modules/*
 set wildignore+=*/dist/*
 set wildignore+=*/plugins/*
-" <c-b> to search buffers.
-map <c-b> <c-p><c-f>
+set wildignore+=*/build/*
+set wildignore+=*/coverage/*
+set wildignore+=*/yarn.lock
+set wildignore+=*/yarn-error.log
+noremap <C-p> :Denite file/rec<CR>
+noremap <C-b> :Denite buffer tag<CR>
+noremap <C-g> :Denite grep<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " easymotion
