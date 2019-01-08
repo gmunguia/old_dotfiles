@@ -36,7 +36,8 @@ call dein#add('dikiaap/minimalist')
 call dein#add('flazz/vim-colorschemes')
 call dein#add('nathanaelkane/vim-indent-guides')
 " Navigation & git
-call dein#add('Shougo/denite.nvim')
+call dein#add('junegunn/fzf', {'build': './install --all'})
+call dein#add('junegunn/fzf.vim')
 call dein#add('scrooloose/nerdtree', {'build': ':UpdateRemotePlugins'})
 call dein#add('Xuyuanp/nerdtree-git-plugin')
 call dein#add('airblade/vim-gitgutter')
@@ -240,17 +241,10 @@ set background=dark
 let g:airline_theme='gruvbox'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" denite
-set wildignore+=*/node_modules/*
-set wildignore+=*/dist/*
-set wildignore+=*/plugins/*
-set wildignore+=*/build/*
-set wildignore+=*/coverage/*
-set wildignore+=*/yarn.lock
-set wildignore+=*/yarn-error.log
-noremap <C-p> :Denite file/rec<CR>
-noremap <C-b> :Denite buffer tag<CR>
-noremap <C-g> :Denite grep<CR>
+" fzf
+noremap <C-p> :FZF<CR>
+noremap <C-b> :Buffers<CR>
+noremap <C-g> :Ag<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " easymotion

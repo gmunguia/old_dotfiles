@@ -72,4 +72,8 @@ sudo chown -R $(whoami) ~/vim-dein
 sh ./installer.sh ~/vim-dein
 rm ./installer.sh
 
+echo "installing ag..."
+# used also for fzf command in neovim
+sudo apt install -y silversearcher-ag
+
 echo "Done!!"
