@@ -241,6 +241,10 @@ set background=dark
 let g:airline_theme='gruvbox'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" startify
+let g:startify_change_to_vcs_root = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf
 noremap <C-p> :FZF<CR>
 noremap <C-b> :Buffers<CR>
