@@ -305,15 +305,18 @@ set autoread
 " Fix weird behavior or Y.
 nmap Y y$
 
-" Allow change window from terminal.
-tmap <c-w> <c-\><c-n><c-w>
+" Easier scape from terminal.
 tmap <leader><esc> <C-\><C-n>
-nmap <leader>. :bnext<CR>
-nmap <leader>, :bprevious<CR>
 
 " Align blocks of text and keep them selected
 vmap < <gv
 vmap > >gv
+
+" Easier change window.
+nnoremap <expr> <tab>
+      \ (winnr('$') == 1) ? "\<C-w>v\<C-w>\<C-w>" : "\<C-w>\<C-w>"
+tnoremap <expr> <leader><tab>
+      \ (winnr('$') == 1) ? "\<C-\>\<C-n>\<C-w>v\<C-w>\<C-w>" : "\<C-\>\<C-n>\<C-w>\<C-w>"
 
 nnoremap <silent> <esc> :noh<cr>
 
