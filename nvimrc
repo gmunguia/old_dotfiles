@@ -249,6 +249,8 @@ let g:startify_change_to_vcs_root = 1
 noremap <C-p> :FZF<CR>
 noremap <C-b> :Buffers<CR>
 noremap <C-g> :Ag<CR>
+" magic to prevent Ag matching file names.
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " easymotion
