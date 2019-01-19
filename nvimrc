@@ -223,7 +223,7 @@ vmap <leader>c <plug>NERDCommenterToggle
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nerd-tree
-map <C-t> :NERDTreeToggle<CR>
+map <leader>t :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -304,6 +304,19 @@ set autoread
 
 " Fix weird behavior or Y.
 nmap Y y$
+
+" Real delete (instead of cut).
+nnoremap x "_x
+nnoremap d "_d
+nnoremap D "_D
+vnoremap d "_d
+nnoremap <leader>x x
+nnoremap <leader>d d
+nnoremap <leader>D D
+vnoremap <leader>d d
+
+" Copy to system clipboard.
+set clipboard+=unnamedplus
 
 " Easier scape from terminal.
 tmap <leader><esc> <C-\><C-n>
