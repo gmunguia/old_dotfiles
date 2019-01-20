@@ -21,13 +21,12 @@ call dein#begin('~/vim-dein/')
 call dein#add('Shougo/dein.vim')
 
 " General
-call dein#add('Shougo/deoplete.nvim')
+call dein#add('neoclide/coc.nvim', {'rev': '*', 'build': 'yarn install'})
 call dein#add('mhinz/vim-startify')
 call dein#add('luochen1990/rainbow')
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('editorconfig/editorconfig-vim')
 call dein#add('w0rp/ale')
-call dein#add('fszymanski/deoplete-emoji')
 " Themes
 call dein#add('morhetz/gruvbox')
 call dein#add('lifepillar/vim-solarized8')
@@ -48,15 +47,6 @@ call dein#add('tpope/vim-surround')
 call dein#add('tpope/vim-fugitive')
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
-" Javascript
-call dein#add('carlitux/deoplete-ternjs', {'build': 'npm i -g tern'})
-call dein#add('pangloss/vim-javascript', {'on_ft': 'javascript'})
-call dein#add('mxw/vim-jsx', {'on_ft': 'javascript'})
-call dein#add('heavenshell/vim-jsdoc', {'on_ft': 'javascript'})
-call dein#add('wokalski/autocomplete-flow', {'on_ft': 'javascript'})
-" Typescript
-call dein#add('mhartington/nvim-typescript', {'on_ft': 'typescript'})
-call dein#add('HerringtonDarkholme/yats', {'on_ft': 'typescript'})
 " Elm
 call dein#add('ElmCast/elm-vim', {'on_ft': 'elm'})
 " Markdown
@@ -97,72 +87,43 @@ let g:tern#arguments = ["--persistent"]
                 "\ 'javascript',
                 "\ ]
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" deoplete-tern
-let g:deoplete#sources#ternjs#guess = 1
-let g:deoplete#sources#ternjs#include_keywords = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" tern
-let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
-let g:deoplete#sources#ternjs#filetypes = [
-  \ 'jsx',
-  \ 'javascript.jsx',
-  \ 'vue',
-  \ 'javascript',
-  \ ]
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 0
-set completeopt+=menuone,noinsert,noselect
-set completeopt-=preview
+" CoC
 
-autocmd CompleteDone * pclose
+" if hidden not set, TextEdit might fail.
+set hidden
 
-function! Multiple_cursors_before()
-  let b:deoplete_disable_auto_complete=2
-endfunction
-function! Multiple_cursors_after()
-  let b:deoplete_disable_auto_complete=0
-endfunction
+" Better display for messages
+set cmdheight=2
 
-call deoplete#custom#source('buffer', 'mark', '*')
-call deoplete#custom#source('tern', 'mark', 'JS')
-call deoplete#custom#source('omni', 'mark', 'O')
-call deoplete#custom#source('typescript', 'mark', 'TS')
-call deoplete#custom#source('file', 'mark', 'F')
-call deoplete#custom#source('jedi', 'mark', 'jd')
-call deoplete#custom#source('_', 'matchers', ['matcher_fuzzy'])
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
 
-function! Preview_func()
-  if &pvw
-    setlocal nonumber norelativenumber
-  endif
-endfunction
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
 
-autocmd WinEnter * call Preview_func()
-let g:deoplete#ignore_sources = {'_': ['around', 'buffer' ]}
+set signcolumn=yes
 
-" Navigate completion results.
-inoremap <silent><expr> <C-j>
-      \ pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <silent><expr> <C-k>
-      \ pumvisible() ? "\<C-p>" : "\<C-k>"
-inoremap <silent><expr> <S-TAB>
-      \ pumvisible() ? "\<C-p>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#close_popup()
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#close_popup()
-function! s:check_back_space() abort "{{{
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+call coc#add_extension('coc-tsserver')
+call coc#add_extension('coc-emoji')
+call coc#add_extension('coc-json')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " multi-cursor
