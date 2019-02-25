@@ -124,6 +124,8 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 call coc#add_extension('coc-tsserver')
 call coc#add_extension('coc-emoji')
 call coc#add_extension('coc-json')
+call coc#add_extension('coc-emmet')
+call coc#add_extension('coc-css')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " multi-cursor
