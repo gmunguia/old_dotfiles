@@ -1,4 +1,14 @@
 {
   "coc.preferences.diagnostic.displayByAle": true,
   "coc.source.emoji.filetypes": false,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "javascript.suggestionActions.enabled": false,
+  "languageserver": {
+    "reason": {
+      "command": "/Users/gerardomunguia/reason-language-server/reason-language-server.exe",
+      "filetypes": ["reason"]
+    }
+  }
 }
