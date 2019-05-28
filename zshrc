@@ -93,6 +93,24 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# vi mode with cursor hint
+set -o vi
+export RPS1=$RPS1 # force the value of RPS1 for first line
+setopt transientrprompt # removes right prompt after accepting commands
+INSERT="%{$fg[yellow]%}%{$fg_bold[black]$bg[yellow]%} INSERT %{$reset_color%}"
+COMMAND="%{$fg[blue]%}%{$fg_bold[black]$bg[blue]%} COMMAND %{$reset_color%}"
+function zle-line-init zle-keymap-select {
+  case $KEYMAP in
+    vicmd) RPS1=$COMMAND;;
+    viins|main) RPS1=$INSERT;;
+    *) RPS1="";;
+  esac
+  RPS2=$RPS1
+  zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 export FZF_DEFAULT_COMMAND='find . -type f -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "*/build/*" -not -path "*/coverage/*" -not -path "*/dist/*" -not -path "*/yarn.lock"'
 
 export NVM_DIR="$HOME/.nvm"
