@@ -10,7 +10,7 @@
 	vimdiff = mergetool -t vimdiff
 	co = checkout
 	fa = fetch --all -p
-	k = log --graph --oneline
+	k = log --graph --oneline --all
 [diff]
   tool = vimdiff
 [merge]
