@@ -9,6 +9,7 @@
 [alias]
 	vimdiff = mergetool -t vimdiff
 	co = checkout
+	cp = cherry-pick
 	fa = fetch --all -p
 	k = log --graph --oneline --all
 [diff]

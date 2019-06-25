@@ -27,6 +27,7 @@ call dein#add('luochen1990/rainbow')
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('editorconfig/editorconfig-vim')
 call dein#add('w0rp/ale')
+call dein#add('sheerun/vim-polyglot')
 " Themes
 call dein#add('morhetz/gruvbox')
 call dein#add('lifepillar/vim-solarized8')
@@ -52,6 +53,8 @@ call dein#add('ElmCast/elm-vim', {'on_ft': 'elm'})
 " Markdown
 call dein#add('godlygeek/tabular', {'on_ft': 'markdown'})
 call dein#add('plasticboy/vim-markdown', {'on_ft': 'markdown'})
+" ReasonML
+call dein#add('reasonml-editor/vim-reason-plus', {'on_ft': 'reason'})
 
 " Required:
 call dein#end()
@@ -120,6 +123,8 @@ endfunction
 " Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Automatically close preview after completion.
+autocmd CursorMoved * if &previewwindow != 1 | pclose | endif
 
 call coc#add_extension('coc-tsserver')
 call coc#add_extension('coc-emoji')
@@ -135,21 +140,23 @@ let g:multi_cursor_skip_key='<C-s>'
 let g:multi_cursor_quit_key='<Esc>'
 let g:multi_cursor_exit_from_insert_mode=0
 
-" enable syntax in jsdoc comments.
-let g:javascript_plugin_jsdoc = 1
-let g:jsdoc_enable_es6 = 1
-
-" auto folds.
-function! SwapFoldMethod()
-  if &foldmethod == "syntax"
-    set foldmethod=manual
-  else
-    set foldmethod=syntax
+func! Multiple_cursors_before()
+  if !exists("b:coc_suggest_disable")
+    let b:coc_suggest_disable = 0
   endif
-endfunction
 
-command Fold call SwapFoldMethod()
-set foldlevel=99 " Start with folds open.
+  if b:coc_suggest_disable
+    let b:coc_is_enabled_before_multi_cursors = 1
+  else
+    let b:coc_is_enabled_before_multi_cursors = 0
+    let b:coc_suggest_disable = 1
+  endif
+endfunc
+func! Multiple_cursors_after()
+  if b:coc_is_enabled_before_multi_cursors
+    let b:coc_suggest_disable = 0
+  endif
+endfunc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " rainbow
@@ -173,8 +180,11 @@ let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['json'] = ['prettier']
 let g:ale_fixers['css'] = ['prettier']
+let g:ale_fixers['scss'] = ['prettier']
 let g:ale_fixers['markdown'] = ['prettier']
 let g:ale_fixers['yaml'] = ['prettier']
+let g:ale_fixers['graphql'] = ['prettier']
+let g:ale_fixers['reason'] = ['refmt']
 nmap <c-l> :ALEFix<CR>
 nmap <silent> ]e <Plug>(ale_next_wrap)
 nmap <silent> [e <Plug>(ale_previous_wrap)
@@ -269,11 +279,9 @@ set autoread
 nmap Y y$
 
 " Real delete (instead of cut).
-nnoremap x "_x
 nnoremap d "_d
 nnoremap D "_D
 vnoremap d "_d
-nnoremap <leader>x x
 nnoremap <leader>d d
 nnoremap <leader>D D
 vnoremap <leader>d d
