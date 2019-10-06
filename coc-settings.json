@@ -1,6 +1,6 @@
 {
-  "coc.preferences.diagnostic.displayByAle": true,
-  "coc.source.emoji.filetypes": false,
+  "coc.source.emoji.filetypes": null,
+  "diagnostic.displayByAle": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
