@@ -162,9 +162,9 @@ if (has("termguicolors"))
  set termguicolors
 endif
 syntax enable
-colorscheme gruvbox
+colorscheme OceanicNext
 set background=dark
-let g:airline_theme='gruvbox'
+let g:airline_theme='oceanicnext'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf
