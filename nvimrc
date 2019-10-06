@@ -22,18 +22,12 @@ call dein#add('Shougo/dein.vim')
 
 " General
 call dein#add('neoclide/coc.nvim', {'rev': '*', 'build': 'yarn install'})
-call dein#add('mhinz/vim-startify')
-call dein#add('luochen1990/rainbow')
 call dein#add('scrooloose/nerdcommenter')
-call dein#add('editorconfig/editorconfig-vim')
 call dein#add('w0rp/ale')
 call dein#add('sheerun/vim-polyglot')
 " Themes
 call dein#add('morhetz/gruvbox')
-call dein#add('lifepillar/vim-solarized8')
 call dein#add('mhartington/oceanic-next')
-call dein#add('dikiaap/minimalist')
-call dein#add('flazz/vim-colorschemes')
 call dein#add('nathanaelkane/vim-indent-guides')
 " Navigation & git
 call dein#add('junegunn/fzf', {'build': './install --all'})
@@ -51,7 +45,6 @@ call dein#add('vim-airline/vim-airline-themes')
 " Elm
 call dein#add('ElmCast/elm-vim', {'on_ft': 'elm'})
 " Markdown
-call dein#add('godlygeek/tabular', {'on_ft': 'markdown'})
 call dein#add('plasticboy/vim-markdown', {'on_ft': 'markdown'})
 " ReasonML
 call dein#add('reasonml-editor/vim-reason-plus', {'on_ft': 'reason'})
@@ -78,17 +71,6 @@ let g:EasyMotion_keys = 'aoeusnthidlrcg12340987'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " elm-vim
 let g:elm_setup_keybindings = 0
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" tern_for_vim
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
-"let g:tern#filetypes = [
-                "\ 'jsx',
-                "\ 'javascript.jsx',
-                "\ 'vue',
-                "\ 'javascript',
-                "\ ]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CoC
@@ -214,10 +196,6 @@ set background=dark
 let g:airline_theme='gruvbox'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" startify
-let g:startify_change_to_vcs_root = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf
 noremap <C-p> :FZF<CR>
 noremap <C-b> :Buffers<CR>
@@ -299,8 +277,6 @@ vmap > >gv
 " Easier change window.
 nnoremap <expr> <tab>
       \ (winnr('$') == 1) ? "\<C-w>v\<C-w>\<C-w>" : "\<C-w>\<C-w>"
-tnoremap <expr> <leader><tab>
-      \ (winnr('$') == 1) ? "\<C-\>\<C-n>\<C-w>v\<C-w>\<C-w>" : "\<C-\>\<C-n>\<C-w>\<C-w>"
 
 nnoremap <silent> <esc> :noh<cr>
 
@@ -373,7 +349,7 @@ set ffs=unix,dos,mac
 set nofoldenable
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Return to last edit position when opening files (You want this!)
+" Return to last edit position when opening files
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
