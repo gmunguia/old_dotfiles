@@ -256,14 +256,6 @@ set autoread
 " Fix weird behavior or Y.
 nmap Y y$
 
-" Real delete (instead of cut).
-nnoremap d "_d
-nnoremap D "_D
-vnoremap d "_d
-nnoremap <leader>d d
-nnoremap <leader>D D
-vnoremap <leader>d d
-
 " Copy to system clipboard.
 set clipboard+=unnamedplus
 
