@@ -12,6 +12,7 @@
 	cp = cherry-pick
 	fa = ! git fetch origin -p && git fetch upstream -p
 	k = log --graph --oneline --all
+	nuke = ! git branch | grep -v master | xargs git branch -D
 [diff]
   tool = vimdiff
 [merge]
