@@ -10,7 +10,7 @@
 	vimdiff = mergetool -t vimdiff
 	co = checkout
 	cp = cherry-pick
-	fa = fetch --all -p
+	fa = ! git fetch origin -p && git fetch upstream -p
 	k = log --graph --oneline --all
 [diff]
   tool = vimdiff
