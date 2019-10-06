@@ -114,31 +114,6 @@ call coc#add_extension('coc-json')
 call coc#add_extension('coc-emmet')
 call coc#add_extension('coc-css')
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" multi-cursor
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-u>'
-let g:multi_cursor_skip_key='<C-s>'
-let g:multi_cursor_quit_key='<Esc>'
-let g:multi_cursor_exit_from_insert_mode=0
-
-func! Multiple_cursors_before()
-  if !exists("b:coc_suggest_disable")
-    let b:coc_suggest_disable = 0
-  endif
-
-  if b:coc_suggest_disable
-    let b:coc_is_enabled_before_multi_cursors = 1
-  else
-    let b:coc_is_enabled_before_multi_cursors = 0
-    let b:coc_suggest_disable = 1
-  endif
-endfunc
-func! Multiple_cursors_after()
-  if b:coc_is_enabled_before_multi_cursors
-    let b:coc_suggest_disable = 0
-  endif
-endfunc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indent Lines
@@ -380,3 +355,24 @@ set title
 
 set list
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" multi-cursor
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-u>'
+let g:multi_cursor_skip_key='<C-s>'
+let g:multi_cursor_quit_key='<Esc>'
+let g:multi_cursor_exit_from_insert_mode=0
+
+" prevent multi-cursors + coc to interfere.
+func! Multiple_cursors_before()
+  CocDisable
+  ALEDisable
+endfunc
+func! Multiple_cursors_after()
+  CocEnable
+  ALEEnable
+endfunc
+
+highlight multiple_cursors_cursor gui=inverse,bold
+highlight multiple_cursors_visual gui=NONE guibg=LightYellow
