@@ -48,6 +48,8 @@ cd fonts
 ./install.sh
 cd ..
 rm -rf fonts
+brew tap homebrew/cask-fonts
+brew cask install font-fira-code
 
 echo "installing neovim..."
 sudo add-apt-repository ppa:neovim-ppa/stable
