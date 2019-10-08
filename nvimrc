@@ -108,6 +108,7 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Automatically close preview after completion.
 autocmd CursorMoved * if &previewwindow != 1 | pclose | endif
 
+call coc#add_extension('coc-tabnine')
 call coc#add_extension('coc-tsserver')
 call coc#add_extension('coc-emoji')
 call coc#add_extension('coc-json')
