@@ -140,7 +140,7 @@ let g:ale_fixers['markdown'] = ['prettier']
 let g:ale_fixers['yaml'] = ['prettier']
 let g:ale_fixers['graphql'] = ['prettier']
 let g:ale_fixers['reason'] = ['refmt']
-nmap <c-l> :ALEFix<CR>
+:autocmd BufWritePre * ALEFix
 nmap <silent> ]e <Plug>(ale_next_wrap)
 nmap <silent> [e <Plug>(ale_previous_wrap)
 
