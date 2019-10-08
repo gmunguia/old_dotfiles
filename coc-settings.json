@@ -1,5 +1,6 @@
 {
   "coc.source.emoji.filetypes": null,
+  "suggest.maxCompleteItemCount": 10,
   "diagnostic.displayByAle": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
