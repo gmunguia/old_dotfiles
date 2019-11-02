@@ -113,5 +113,7 @@ zle -N zle-keymap-select
 
 export FZF_DEFAULT_COMMAND='find . -type f -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "*/build/*" -not -path "*/coverage/*" -not -path "*/dist/*" -not -name "yarn.lock"'
 
+export LC_ALL=en_US.UTF-8
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
