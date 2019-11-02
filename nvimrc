@@ -229,6 +229,9 @@ set autoread
 " Fix weird behavior or Y.
 nmap Y y$
 
+" Prevent replace from overwriting paste buffer.
+vnoremap p "_dP
+
 " Copy to system clipboard.
 set clipboard+=unnamedplus
 
