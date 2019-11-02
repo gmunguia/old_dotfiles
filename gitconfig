@@ -12,11 +12,16 @@
 	cp = cherry-pick
 	fa = ! git fetch origin -p && git fetch upstream -p
 	k = log --graph --oneline --all
-	nuke = ! git branch | grep -v master | xargs git branch -D
+	nuke = ! git branch | grep -v master | xargs git branch -D && git gc
+	rum = ! git fetch upstream && git rebase upstream/master
+	cane = ! git commit --amend --no-edit
+	pff = ! git branch | grep \\* | sed 's/\\* //' | xargs git push --force-with-lease origin
 [diff]
-  tool = vimdiff
+	tool = vimdiff
 [merge]
-  tool = vimdiff
-  conflictstyle = diff3
+	tool = vimdiff
+	conflictstyle = diff3
 [mergetool "vimdiff"]
-  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+	cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[gui]
+	gcwarning = false
