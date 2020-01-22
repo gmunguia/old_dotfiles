@@ -16,6 +16,7 @@
 	rum = ! git fetch upstream && git rebase upstream/master
 	cane = ! git commit --amend --no-edit
 	pff = ! git branch | grep \\* | sed 's/\\* //' | xargs git push --force-with-lease origin
+	crepe = ! git branch | grep \\* | sed 's/\\* //' | xargs git push -u origin
 [diff]
 	tool = vimdiff
 [merge]
