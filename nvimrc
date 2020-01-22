@@ -46,8 +46,6 @@ call dein#add('vim-airline/vim-airline-themes')
 call dein#add('ElmCast/elm-vim', {'on_ft': 'elm'})
 " Markdown
 call dein#add('plasticboy/vim-markdown', {'on_ft': 'markdown'})
-" ReasonML
-call dein#add('reasonml-editor/vim-reason-plus', {'on_ft': 'reason'})
 
 " Required:
 call dein#end()
