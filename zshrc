@@ -60,6 +60,7 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+bindkey -M vicmd "^V" edit-command-line
 
 # interactive autocomplete via zsh-autosuggestions
 bindkey '^ ' autosuggest-accept
