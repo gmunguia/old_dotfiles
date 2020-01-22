@@ -114,6 +114,7 @@ call coc#add_extension('coc-emoji')
 call coc#add_extension('coc-json')
 call coc#add_extension('coc-emmet')
 call coc#add_extension('coc-css')
+call coc#add_extension('coc-reason')
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -124,8 +125,8 @@ let g:indent_guides_guide_size = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ale
-let g:ale_sign_error = 'X' " could use emoji
-let g:ale_sign_warning = '?' " could use emoji
+let g:ale_sign_error = '🙈'
+let g:ale_sign_warning = '❕'
 let g:ale_statusline_format = ['X %d', '? %d', '']
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
@@ -140,6 +141,9 @@ let g:ale_fixers['markdown'] = ['prettier']
 let g:ale_fixers['yaml'] = ['prettier']
 let g:ale_fixers['graphql'] = ['prettier']
 let g:ale_fixers['reason'] = ['refmt']
+let g:ale_fixers['haskell'] = ['brittany']
+let g:ale_linters = {}
+let g:ale_linters['haskell'] = ['stack_build']
 :autocmd BufWritePre * ALEFix
 nmap <silent> ]e <Plug>(ale_next_wrap)
 nmap <silent> [e <Plug>(ale_previous_wrap)
