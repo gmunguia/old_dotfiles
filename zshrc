@@ -11,6 +11,7 @@ ZSH_THEME="agnoster"
 
 plugins=(
   git
+  history-search-multi-word
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -58,6 +59,17 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+
+# History
+bindkey "^R" history-search-multi-word
+zstyle ":plugin:history-search-multi-word" reset-prompt-protect 1
+zstyle ":history-search-multi-word" highlight-color "fg=yellow,bold" # Color in which to highlight matched, searched text (default bg=17 on 256-color terminals)
+zstyle ":plugin:history-search-multi-word" clear-on-cancel "yes" # Whether pressing Ctrl-C or ESC should clear entered query
+HISTSIZE=100000
+SAVEHIST=100000
+setopt EXTENDED_HISTORY
+
+# FZF is used by neovim through a search plugin.
 export FZF_DEFAULT_COMMAND='find . -type f -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "*/build/*" -not -path "*/coverage/*" -not -path "*/dist/*" -not -name "yarn.lock" -not -name ".DS_Store"'
 
 export LC_ALL=en_US.UTF-8
