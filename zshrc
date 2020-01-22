@@ -12,6 +12,7 @@ ZSH_THEME="agnoster"
 plugins=(
   git
   history-search-multi-word
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -59,6 +60,9 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+
+# interactive autocomplete via zsh-autosuggestions
+bindkey '^ ' autosuggest-accept
 
 # History
 bindkey "^R" history-search-multi-word
