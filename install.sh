@@ -78,4 +78,9 @@ echo "installing ag..."
 # used also for fzf command in neovim
 sudo apt install -y silversearcher-ag
 
+echo "installing zsh plugins"
+cd ~/.oh-my-zsh/custom/plugins
+git clone https://github.com/zdharma/history-search-multi-word.git
+git clone https://github.com/zsh-users/zsh-autosuggestions
+
 echo "Done!!"
