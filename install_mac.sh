@@ -4,5 +4,7 @@ brew cask install iterm2
 brew tap homebrew/cask-fonts
 brew cask install font-fira-code
 
-echo "installing generic apps"
 brew cask install shortcuts
+
+brew cask install macs-fan-control
+echo "open macs-fan-control"
