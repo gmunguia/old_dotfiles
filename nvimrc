@@ -38,6 +38,7 @@ call dein#add('airblade/vim-gitgutter')
 call dein#add('terryma/vim-multiple-cursors')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('tpope/vim-surround')
+call dein#add('pelodelfuego/vim-swoop')
 " Status bar
 call dein#add('tpope/vim-fugitive')
 call dein#add('vim-airline/vim-airline')
@@ -382,3 +383,11 @@ endfunc
 
 highlight multiple_cursors_cursor gui=inverse,bold
 highlight multiple_cursors_visual gui=NONE guibg=LightYellow
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" swoop
+let g:swoopUseDefaultKeyMap = 0
+nmap <leader>g :call Swoop()<CR>
+vmap <leader>g :call SwoopSelection()<CR>
+nmap <leader>m :call SwoopMulti()<CR>
+vmap <leader>m :call SwoopMultiSelection()<CR>
