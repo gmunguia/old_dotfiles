@@ -21,7 +21,7 @@ call dein#begin('~/vim-dein/')
 call dein#add('Shougo/dein.vim')
 
 " General
-call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
+call dein#add('neoclide/coc.nvim', {'merged': 0, 'rev': 'release'})
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('w0rp/ale')
 call dein#add('sheerun/vim-polyglot')
