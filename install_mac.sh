@@ -33,4 +33,6 @@ brew cask install wireshark
 brew cask install macs-fan-control
 echo "open macs-fan-control to accept security alert"
 
-
+echo "adding mac-specific aliases"
+echo 'alias copy="pbcopy"' >> ~/.zshrc
+echo 'alias paste="pbpaste"' >> ~/.zshrc
