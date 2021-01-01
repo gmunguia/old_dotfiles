@@ -7,12 +7,13 @@ export ZSH=~/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+#ZSH_THEME="agnoster"
 
 plugins=(
   git
   history-search-multi-word
   zsh-autosuggestions
+  fast-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -42,23 +43,7 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# vi mode with mode hint
 set -o vi
-export RPS1=$RPS1 # force the value of RPS1 for first line
-setopt transientrprompt # removes right prompt after accepting commands
-INSERT="%{$fg[yellow]%}%{$fg_bold[black]$bg[yellow]%} INSERT %{$reset_color%}"
-COMMAND="%{$fg[blue]%}%{$fg_bold[black]$bg[blue]%} COMMAND %{$reset_color%}"
-function zle-line-init zle-keymap-select {
-  case $KEYMAP in
-    vicmd) RPS1=$COMMAND;;
-    viins|main) RPS1=$INSERT;;
-    *) RPS1="";;
-  esac
-  RPS2=$RPS1
-  zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
 
 bindkey -M vicmd "^V" edit-command-line
 

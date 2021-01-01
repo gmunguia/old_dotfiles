@@ -1,0 +1,9 @@
+! See https://wiki.archlinux.org/index.php/Xmodmap
+! 108 is Alt_R
+keycode 108 = Mode_switch
+keycode 38 = a A aacute Aacute
+keycode 39 = o O oacute Oacute
+keycode 40 = e E eacute Eacute
+keycode 41 = u U uacute Uacute
+keycode 42 = i I iacute Iacute
+keycode 46 = n N ntilde Ntilde
