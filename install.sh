@@ -51,6 +51,9 @@ rm -rf fonts
 brew tap homebrew/cask-fonts
 brew cask install font-fira-code
 
+echo "installing genecir apps"
+brew cask install shortcuts
+
 echo "installing neovim..."
 sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt update
