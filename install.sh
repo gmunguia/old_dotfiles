@@ -100,4 +100,8 @@ sudo apt-add-repository ppa:yubico/stable
 sudo apt update
 sudo apt install yubikey-manager
 
+echo "adding linux-specific aliases"
+echo 'alias copy="xclip -selection c"' >> ~/.zshrc
+echo 'alias paste="xclip -selection clipboard -o"' >> ~/.zshrc
+
 echo "Done!!"

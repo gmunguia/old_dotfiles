@@ -8,3 +8,7 @@ brew cask install shortcuts
 
 brew cask install macs-fan-control
 echo "open macs-fan-control"
+
+echo "adding mac-specific aliases"
+echo 'alias copy="pbcopy"' >> ~/.zshrc
+echo 'alias paste="pbpaste"' >> ~/.zshrc
