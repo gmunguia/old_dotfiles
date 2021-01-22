@@ -33,7 +33,7 @@ const theme = {
 module.exports = {
   config: {
     updateChannel: "stable",
-    fontSize: 13,
+    fontSize: 16,
     fontFamily: '"Fira Code", monospace',
     fontWeight: "normal",
     fontWeightBold: "bold",
@@ -46,7 +46,7 @@ module.exports = {
     showHamburgerMenu: "",
     showWindowControls: "",
     ...theme,
-    shell: "/usr/bin/zsh",
+    shell: "/usr/local/bin/zsh",
     shellArgs: ["--login"],
     env: {},
     bell: "SOUND",
@@ -54,9 +54,8 @@ module.exports = {
     defaultSSHApp: true,
     quickEdit: false,
     macOptionSelectionMode: "vertical",
-    // False so that ligatures work.
-    webGLRenderer: false,
-    webLinksActivationKey: 'ctrl',
+    webGLRenderer: false, // False so that ligatures work.
+    webLinksActivationKey: "meta",
   },
   plugins: [
     "hyper-font-ligatures",
