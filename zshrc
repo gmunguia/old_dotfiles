@@ -49,6 +49,7 @@ bindkey -M vicmd "^V" edit-command-line
 
 # interactive autocomplete via zsh-autosuggestions
 bindkey '^ ' autosuggest-accept
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=103'
 
 # History
 bindkey "^R" history-search-multi-word
