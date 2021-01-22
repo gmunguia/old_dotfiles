@@ -56,11 +56,18 @@ module.exports = {
     macOptionSelectionMode: "vertical",
     webGLRenderer: false, // False so that ligatures work.
     webLinksActivationKey: "meta",
+
+    hyperTabs: {
+      navMoveable: 0,
+    },
   },
   plugins: [
     "hyper-font-ligatures",
     "hyper-tabs-enhanced",
     "hyper-fading-scrollbar",
+    "hyper-reorderable-tabs",
+    "hyperterm-safepaste",
+    "hyper-confirm",
   ],
   localPlugins: [],
   keymaps: {
