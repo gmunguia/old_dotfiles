@@ -11,12 +11,13 @@
 	co = checkout
 	cp = cherry-pick
 	fa = ! git fetch origin -p && git fetch upstream -p
-	k = log --graph --oneline --all
+	k = log --graph --all --pretty=format:'%C(auto)%h %C("#"7c80b6)%as%C(auto)%d %s'
 	nuke = ! git branch | grep -v master | xargs git branch -D && git gc
 	rum = ! git fetch upstream && git rebase upstream/master
-	cane = ! git commit --amend --no-edit
+	cane = commit --amend --no-edit
 	pff = ! git branch | grep \\* | sed 's/\\* //' | xargs git push --force-with-lease origin
 	crepe = ! git branch | grep \\* | sed 's/\\* //' | xargs git push -u origin
+	wip = commit -m'wip' --no-verify
 [diff]
 	tool = vimdiff
 [merge]
