@@ -18,7 +18,7 @@
 	pff = ! git branch | grep \\* | sed 's/\\* //' | xargs git push --force-with-lease origin
 	crepe = ! git branch | grep \\* | sed 's/\\* //' | xargs git push -u origin
 	wip = commit -m'wip' --no-verify
-	main = ! git rev-parse --verify upstream/master > /dev/null && echo "master" || echo "main"
+	main = ! git rev-parse --verify upstream/master > /dev/null 2>&1 && echo "master" || echo "main"
 [diff]
 	tool = vimdiff
 [merge]
