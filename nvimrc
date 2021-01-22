@@ -141,6 +141,7 @@ let g:ale_fixers['yaml'] = ['prettier']
 let g:ale_fixers['graphql'] = ['prettier']
 let g:ale_fixers['reason'] = ['refmt']
 let g:ale_fixers['haskell'] = ['brittany']
+let g:ale_fixers['terraform'] = ['terraform']
 let g:ale_linters = {}
 let g:ale_linters['haskell'] = ['stack_build']
 :autocmd BufWritePre * ALEFix
