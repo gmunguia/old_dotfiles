@@ -114,6 +114,7 @@ call coc#add_extension('coc-emmet')
 call coc#add_extension('coc-css')
 call coc#add_extension('coc-reason')
 
+nmap <C-f> <Plug>(coc-fix-current)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indent Lines
