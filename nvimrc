@@ -145,6 +145,7 @@ let g:ale_fixers['haskell'] = ['brittany']
 let g:ale_fixers['terraform'] = ['terraform']
 let g:ale_linters = {}
 let g:ale_linters['haskell'] = ['stack_build']
+let g:ale_linters['terraform'] = ['tflint']
 :autocmd BufWritePre * ALEFix
 nmap <silent> ]e <Plug>(ale_next_wrap)
 nmap <silent> [e <Plug>(ale_previous_wrap)
